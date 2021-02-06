@@ -2,15 +2,15 @@ const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
 
-
+const { apiKey, port } = require("./config")
 const app = express();
-const PORT = 3001;
+const PORT = port || 3001;
 
 
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.json({ limit: "20mb" }));
-app.use(express.urlencoded({ limit: "20mb", extended: false }));
+// app.use(express.urlencoded({ limit: "20mb", extended: false }));
 
 
 app.get("/", (req, res) => {
@@ -27,3 +27,5 @@ app.listen(PORT, () => console.log(`App is running on ${PORT} -> http://localhos
 // Ваш ключ API: c54624b532034d37897daa401492658a
 // https://api_webhooks.ngrok.io/webhooks
 // ngrok http 3001 -subdomain=api_webhooks
+
+// c54624b532034d37897daa401492658a
